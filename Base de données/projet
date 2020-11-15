@@ -1,0 +1,218 @@
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: projet
+-- ------------------------------------------------------
+-- Server version	5.7.9-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admincmpthopital`
+--
+
+DROP TABLE IF EXISTS admincmpthopital;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE admincmpthopital (
+  id int(11) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  pass varchar(255) NOT NULL,
+  idEtablissement int(11) DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY idEtablissement (idEtablissement),
+  CONSTRAINT admincmpthopital_ibfk_1 FOREIGN KEY (idEtablissement) REFERENCES etablissement (id)
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admincmpthopital`
+--
+
+LOCK TABLES admincmpthopital WRITE;
+/*!40000 ALTER TABLE admincmpthopital DISABLE KEYS */;
+INSERT INTO admincmpthopital VALUES (1,'user1','1111',1),(2,'user2','2222',2),(3,'user3','3333',3),(4,'user4','4444',4);
+/*!40000 ALTER TABLE admincmpthopital ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `admincmptministre`
+--
+
+DROP TABLE IF EXISTS admincmptministre;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE admincmptministre (
+  id int(11) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  pass varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admincmptministre`
+--
+
+LOCK TABLES admincmptministre WRITE;
+/*!40000 ALTER TABLE admincmptministre DISABLE KEYS */;
+INSERT INTO admincmptministre VALUES (1,'admin','5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
+/*!40000 ALTER TABLE admincmptministre ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dossiermedical`
+--
+
+DROP TABLE IF EXISTS dossiermedical;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE dossiermedical (
+  id int(11) NOT NULL,
+  maladie varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dossiermedical`
+--
+
+LOCK TABLES dossiermedical WRITE;
+/*!40000 ALTER TABLE dossiermedical DISABLE KEYS */;
+INSERT INTO dossiermedical VALUES (1,'Hypertension'),(2,'Alzhaimer'),(3,'diabetique'),(4,'Grossess');
+/*!40000 ALTER TABLE dossiermedical ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `etablissement`
+--
+
+DROP TABLE IF EXISTS etablissement;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE etablissement (
+  id int(11) NOT NULL,
+  nom varchar(255) NOT NULL,
+  adresse varchar(255) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `etablissement`
+--
+
+LOCK TABLES etablissement WRITE;
+/*!40000 ALTER TABLE etablissement DISABLE KEYS */;
+INSERT INTO etablissement VALUES (1,'Établissement hospitalier Universitaire','Oran'),(2,'Centre hospitalo-universitaire de Beni-Messous','Beni?Messous'),(3,'Centre hospitalo-universitaire de Bab-El_Oued','Alger'),(4,'Centre hospitalo?universitaire de Blida','Blida'),(5,'Centre hospitalo?universitaire de Skikda','Skikda'),(6,'EPH de Adrar','Adrar'),(7,'EPH de Timimoun','Timimoun Adrar'),(8,'Établissement hospitalier spécialisé Drid Hocine ','Alger'),(9,'EPH de Laghouat','Laghouat'),(10,'EPH  Ouled Mohamed','Chlef'),(11,'EPSP de Laghouat','Laghouat'),(12,'EPSP de Laghouat','Laghouat'),(13,'Établissement hospitalier de Koléa','Blida'),(14,'Établissement public de santé de proximité de Sétif','Setif'),(15,'EPSP de Batna','Batna'),(16,'EPH Mohamed Boudiaf ','Bariqa, Batna'),(17,'EHS Psychiatrie de Blida','Blida'),(18,'EPH Frantz Fanon','Bejaia'),(19,'EPH','Amizour, Bejaia'),(20,'EPH Bachir Bennacer','Biskra'),(21,'EHS Mère et Enfants','Biskra'),(22,'EPH nouvel hopital de Bechar','Bechar'),(23,'EPSP Bechar','Bechar'),(24,'EHS de Bechar','Alger'),(25,'EHS CAC Blida','Blida'),(26,'EPH Bouira','Bouira'),(27,'EPH Ain Bessam','Ain Bessam Bouira'),(28,'EPH Tamenrasset','Tamnenrasset'),(29,'EPH Alia Salah','Tebessa'),(30,'EPH Bouguerra Boulares','Tebessa'),(31,'Centre hospitalo universitaire de Tlemcen','Tlemcen'),(32,'EPH Zerdani Salah ','Ain Beida,Oum EL Bouaghi');
+/*!40000 ALTER TABLE etablissement ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `medecin`
+--
+
+DROP TABLE IF EXISTS medecin;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE medecin (
+  id int(11) NOT NULL,
+  idEtablissement int(11) DEFAULT NULL,
+  `user` varchar(255) NOT NULL,
+  pass varchar(255) NOT NULL,
+  nom varchar(255) NOT NULL,
+  prenom varchar(255) NOT NULL,
+  dateNaissence date DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY idEtablissement (idEtablissement),
+  CONSTRAINT medecin_ibfk_1 FOREIGN KEY (idEtablissement) REFERENCES etablissement (id)
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `medecin`
+--
+
+LOCK TABLES medecin WRITE;
+/*!40000 ALTER TABLE medecin DISABLE KEYS */;
+INSERT INTO medecin VALUES (4,14,'userm4','4444','abdenour','mehdi','1980-03-01'),(5,4,'userm5','5555','karim','salama','0000-00-00'),(6,10,'userm7','6666','zahir','salima','1972-01-02'),(7,1,'userm8','7777','ibrahim','abla','1973-01-02'),(8,11,'userm9','8888','nassim','tarik','1989-01-02'),(9,15,'userm10','9999','mito','doria','1990-03-11'),(10,16,'userm11','0000','taki','chemsseddine','1992-01-02'),(11,17,'userm12','1111','ihab','saadane','1992-01-02'),(12,1,'userm13','3333','mehdi','ihassan','1980-02-02'),(15,12,'userm14','3333','imad','mehdi','1995-04-01');
+/*!40000 ALTER TABLE medecin ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ordonnence`
+--
+
+DROP TABLE IF EXISTS ordonnence;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE ordonnence (
+  id int(11) NOT NULL,
+  med varchar(255) NOT NULL,
+  dose varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ordonnence`
+--
+
+LOCK TABLES ordonnence WRITE;
+/*!40000 ALTER TABLE ordonnence DISABLE KEYS */;
+INSERT INTO ordonnence VALUES (1,'kuplex','0.14'),(2,'paracetamol','0.80'),(3,'defralgan','1.80'),(4,'paracetamol','2.80'),(5,'metophetamine','1.80'),(6,'alpharino','0.90');
+/*!40000 ALTER TABLE ordonnence ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `patient`
+--
+
+DROP TABLE IF EXISTS patient;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE patient (
+  id int(11) NOT NULL,
+  idEtablissement int(11) DEFAULT NULL,
+  dossierMedical int(11) DEFAULT NULL,
+  `user` varchar(255) NOT NULL,
+  pass varchar(255) NOT NULL,
+  nom varchar(255) NOT NULL,
+  prenom varchar(255) NOT NULL,
+  dateNaissace date NOT NULL,
+  numTel int(10) DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY idEtablissement (idEtablissement),
+  CONSTRAINT patient_ibfk_1 FOREIGN KEY (idEtablissement) REFERENCES etablissement (id)
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `patient`
+--
+
+LOCK TABLES patient WRITE;
+/*!40000 ALTER TABLE patient DISABLE KEYS */;
+INSERT INTO patient VALUES (1,1,1,'user1','1111','Mohamed','mahmoud','0000-00-00',123456),(2,2,2,'user2','2222','karim','mahmoud','0000-00-00',123456),(3,2,2,'user3','3333','karim','mehdi','0000-00-00',123456),(4,14,1,'user4','4444','abdenour','mehdi','1990-03-01',123456),(5,4,3,'user5','5555','karim','salama','0000-00-00',123456),(6,10,4,'user7','6666','zahir','salima','1972-01-02',123456),(7,1,4,'user8','7777','ibrahim','abla','1999-01-02',123456),(8,11,3,'user9','8888','nassim','tarik','1980-01-02',123456),(9,15,4,'user10','9999','mito','doria','1990-03-11',123456),(10,16,2,'user11','0000','taki','chemsseddine','1992-01-02',123456),(11,17,2,'user12','1111','ihab','saadane','1992-01-02',123456),(12,1,1,'user13','3333','mehdi','ihassan','1980-02-02',123456),(13,12,2,'user14','3333','imad','mehdi','1992-01-02',123456),(15,12,2,'user14','3333','imad','mehdi','1995-04-01',123456);
+/*!40000 ALTER TABLE patient ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed
